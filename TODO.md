@@ -1,5 +1,8 @@
 # To Do
 
+# For all machines
+## in Ansible
+ansible-playbook local.yml -e "my_hosts=localhost"
 # Define base image for Proxmox Virtual Environment
 
 ## In Ansible
@@ -18,6 +21,5 @@
 * Setup up name and IP address for machine // this maybe done during install.
 * Setup LDAP Client
 * Install Root Certificate for HTTPS connections
-* Setup Ansible configuration.
 * Setup Qemu-guest-agent
   

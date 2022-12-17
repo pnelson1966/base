@@ -1,0 +1,36 @@
+# to run
+# ansible-playbook local.yml -e "my_host=hostname my_ip=xxx.xxx.xxx.xxx"
+#
+
+
+---
+- name: "Setting up local machine for usage in homelab"
+  hosts: localhost
+  connection: local
+tasks:
+- name: Setup static ip address
+  SETUP IP ADDR using my_ip
+  SETUP HOSTNAME using "{{ my_host }}"
+
+- name: install packages
+  apt:
+    pkg:
+    - net-tools
+    - qemu-guest-agent
+
+- name: Restart and enable qemu-guest-agent service
+  service:
+    name: qemu-guest-agent
+    enabled: yes
+    state: restarted
+
+- name: set default domain 
+  replace:
+    path: /etc/systemd/resolved.conf
+    regexp: '#Domains='
+    replace: 'Domains=home.arpa'
+
+- name: create boss admin account and setup for local usage.
+  CREATE account
+  ADD TO SUDOERS
+
